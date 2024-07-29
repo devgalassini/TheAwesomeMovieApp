@@ -29,36 +29,47 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures{
+
+    buildFeatures {
         viewBinding = true
     }
+
     dataBinding {
         enable = true
     }
 }
 
 dependencies {
-
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
+
+    // Test dependencies
     testImplementation(libs.junit)
     testImplementation(libs.truth)
     testImplementation(libs.mockk.mockk)
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+    testImplementation("org.mockito:mockito-core:3.12.4")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+
+
+    // Android Test dependencies
     androidTestImplementation(libs.kotlinxCoroutinesTest)
-//    androidTestImplementation(libs.mockkAndroid)
-//    androidTestImplementation(libs.mockk)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
+    // Other dependencies
     implementation(libs.coil)
     implementation(libs.navigationFragment)
     implementation(libs.navigationUi)
@@ -66,19 +77,10 @@ dependencies {
     implementation(libs.lifecycleLivedata)
     implementation(libs.lifecycleRuntime)
     implementation(libs.kotlinxCoroutines)
-
     implementation(libs.koinGraph)
-
     implementation(libs.roomRuntime)
     implementation(libs.roomKtx)
     ksp(libs.roomCompilerKsp)
-
-//    implementation(libs.processingKsp)
-//    ksp(libs.processorKsp)
-
-//    implementation(libs.circleIndicator)
-//    implementation(libs.imageCarousel)
-
     implementation(libs.koinAndroid)
     implementation(libs.gson)
     implementation(libs.retrofit)
@@ -86,7 +88,6 @@ dependencies {
     implementation(libs.rxjava2Adapter)
     implementation(libs.moshiKotlin)
     ksp(libs.moshiKotlinKsp)
-
     implementation(libs.pagingRuntimeKtx)
     implementation(libs.pagingCommonKtx)
 }
